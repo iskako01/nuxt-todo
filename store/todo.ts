@@ -3,7 +3,7 @@ import { v4 as uuid } from "uuid";
 
 export interface Todo {
   id: string;
-  title: string;
+  label: string;
   done: boolean;
   createdAt: Date;
   updatedAt: Date;
@@ -13,10 +13,10 @@ export interface TodoState {
   items: Todo[] | undefined;
 }
 export interface TodoAdd {
-  title: string;
+  label: string;
 }
 export interface TodoUpdate {
-  title?: string;
+  label?: string;
   done?: boolean;
 }
 
