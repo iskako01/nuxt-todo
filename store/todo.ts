@@ -52,9 +52,14 @@ const actions = {
   },
 
   updateItem(id: string, update: TodoUpdate) {
-    this.items = this.items.map((item) =>
-      item.id === id ? { ...item, ...update, updatedAt: new Date() } : item
+    const items = this.items;
+    const index = items.findIndex(
+      (item: Todo) => !!item && (item as Todo).id === id
     );
+
+    console.log(index);
+
+    items[index] = { ...items[index], ...update, updatedAt: new Date() };
   },
 };
 

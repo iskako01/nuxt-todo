@@ -20,7 +20,7 @@ const localTodoValue = computed({
 
 <template>
   <div
-    class="w-9/12 max-w-lg mx-auto flex items-center justify-center mt-7 bg-white shadow p-5 rounded"
+    class="w-10/12 max-w-lg mx-auto flex items-center justify-center mt-7 mb-10 bg-white shadow p-5 rounded"
   >
     <input
       v-model="localTodoValue"
