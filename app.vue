@@ -11,12 +11,11 @@ const saveNewTodo = () => {
     error.value = true;
     return;
   }
+
   todoStore.addItem({
     label: newTodo.value,
   });
   newTodo.value = "";
-
-  console.log(todoStore.items);
 };
 </script>
 
@@ -28,7 +27,8 @@ const saveNewTodo = () => {
 
     <section class="md:w-8/12 md:mx-auto lg:w-6/12 py-4 rounded-lg">
       <TodoInput v-model="newTodo" @save="saveNewTodo" :error="error" />
-      <!-- <TodoList /> -->
+      <TodoList :items="todoStore.getSortedTodos.reverse()" />
+      <p>{{ newTodo }}</p>
     </section>
   </main>
 </template>

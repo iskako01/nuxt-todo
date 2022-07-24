@@ -1,19 +1,19 @@
-<script setup lang="ts">
-import { computed } from '@vue/reactivity';
-
-const props = defineProps<{ modelValue: string; error: boolean }>();
-
+<script lang="ts" setup>
+const props = defineProps<{
+  modelValue: string;
+  error: boolean;
+//   loading: boolean;
+}>();
 const emit = defineEmits<{
-  (e: "update.modelValue", value: string): void;
+  (e: "update:modelValue", value: string): void;
   (e: "save"): void;
 }>();
-
-const localState = computed({
+const localTodoValue = computed({
   get() {
     return props.modelValue;
   },
-  set(value) {
-    emit("update.modelValue", value);
+  set(value: string) {
+    emit("update:modelValue", value);
   },
 });
 </script>
@@ -23,11 +23,12 @@ const localState = computed({
     class="w-9/12 max-w-lg mx-auto flex items-center justify-center mt-7 bg-white shadow p-5 rounded"
   >
     <input
-      v-model="localState"
+      v-model="localTodoValue"
       @keypress.enter="$emit('save')"
       type="text"
       placeholder="Add a todo ..."
-      class="py-2 px-4 border border-blue-200 focus:outline-blue-400 rounded"
+      class="py-2 px-4 border focus:outline-blue-400 rounded"
+      :class="{ 'border-red-500': error, 'border-blue-200': !error }"
     />
     <button
       @click="$emit('save')"

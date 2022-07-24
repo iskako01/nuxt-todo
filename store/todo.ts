@@ -28,11 +28,12 @@ const getters = {
   getbyId: (state: TodoState) => (id: string) => {
     return state.items.find((item) => item.id === id);
   },
-  getOrderedTodos: (state: TodoState) =>
-    state.items.sort(
-      (a: Todo, b: Todo) =>
-        a.createdAt.getMilliseconds() - b.createdAt.getMilliseconds()
-    ),
+  getSortedTodos: (state: TodoState) => {
+    return [...state.items].sort(
+      (a, b) =>
+        new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+    );
+  },
 };
 const actions = {
   addItem(partialTodo: TodoAdd) {
