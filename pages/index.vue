@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useTodoStore } from "./store/todo";
+import { useTodoStore } from "../store/todo";
 
 const todoStore = useTodoStore();
 
